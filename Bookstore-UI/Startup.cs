@@ -8,8 +8,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using Blazored.LocalStorage;
 using Bookstore_UI.Contracts;
 using Bookstore_UI.Services;
 
@@ -31,8 +33,10 @@ namespace Bookstore_UI
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddBlazoredLocalStorage();
             services.AddHttpClient();
             services.AddTransient<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddScoped<JwtSecurityTokenHandler>();
             services.AddCors();
         }
 
@@ -53,6 +57,7 @@ namespace Bookstore_UI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCors();
+            
             
             app.UseRouting();
 

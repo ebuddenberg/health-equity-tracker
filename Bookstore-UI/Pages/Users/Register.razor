@@ -13,17 +13,17 @@
 
 
     
-    @*@if (isFailed)
+    @if (isFailed)
     {
         <div class=" alert alert-danger">
             <p>Something went wrong with the registration attempt</p>
 
 
         </div>
-    }*@
+    }
     
         <div class="card-body">
-            <EditForm Model="typeof(RegisterAndLoginModel)" OnValidSubmit="HandleRegistration">
+            <EditForm Model="Model" OnValidSubmit="HandleRegistration">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <div class="form-group">
@@ -66,4 +66,7 @@
             isFailed = true;
         }
     }
+
+  
+
 }
