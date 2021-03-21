@@ -75,5 +75,6 @@ namespace Bookstore_UI.Providers
             claims.Add(new Claim(ClaimTypes.Name,tokenContent.Subject));
             return claims;
         }
+
     }
 }

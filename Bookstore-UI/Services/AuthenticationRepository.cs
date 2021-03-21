@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Bookstore_UI.Contracts;
 using Bookstore_UI.Models;
+using Bookstore_UI.Pages.Users;
 using Bookstore_UI.Providers;
 using Bookstore_UI.Static;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -19,14 +21,19 @@ namespace Bookstore_UI.Services
         private readonly IHttpClientFactory _client;
         private readonly ILocalStorageService _localStorage;
         private readonly AuthenticationStateProvider _authStateProvide;
+     
 
-        public AuthenticationRepository(IHttpClientFactory client, ILocalStorageService localStorage, AuthenticationStateProvider authStateProvide)
+
+        public AuthenticationRepository(IHttpClientFactory client, 
+            ILocalStorageService localStorage, 
+            AuthenticationStateProvider authStateProvide)
         {
             _client = client;
             _localStorage = localStorage;
             _authStateProvide = authStateProvide;
+            
         }
-        public async Task<bool> Register(RegisterAndLoginModel user)
+        public async Task<bool> Register(RegisterModel user)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             try
@@ -45,7 +52,9 @@ namespace Bookstore_UI.Services
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> Login(RegisterAndLoginModel login)
+       
+
+        public async Task<bool> Login(LoginModel login)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             try
@@ -61,13 +70,16 @@ namespace Bookstore_UI.Services
                 //store the token
                 await _localStorage.SetItemAsync("authToken", token.Token);
                 //change auth state of app
-                await ((ApiAuthenticationStateProvider)_authStateProvide).LoggedIn();
+
+
+                
+               await ((ApiAuthenticationStateProvider)_authStateProvide).LoggedIn();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token.Token);
 
             }
             catch (Exception e)
             {
-                return response.StatusCode == HttpStatusCode.BadRequest;
+                return false;
             }
 
 
