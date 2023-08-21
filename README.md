@@ -4,36 +4,6 @@ Codebase for the [Health Equity Tracker](https://healthequitytracker.org/), Satc
 
 > Prompted by the COVID-19 pandemic, the Health Equity Tracker was created in 2020 to aggregate up-to-date demographic data from the hardest-hit communities. The Health Equity Tracker aims to give a detailed view of health outcomes by race, ethnicity, sex, socioeconomic status, and other critical factors. Our hope is that it will help policymakers understand what resources and support affected communities need to be able to improve their outcomes.
 
-[![Check Outgoing Links](https://github.com/SatcherInstitute/health-equity-tracker/actions/workflows/urlsScheduled.yml/badge.svg)](https://github.com/SatcherInstitute/health-equity-tracker/actions/workflows/urlsScheduled.yml)
-[![GitHub Super-Linter](https://github.com/SatcherInstitute/health-equity-tracker/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-
-## Contributing
-
-1. [Fork the repository on github](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo)
-2. On your development machine, clone your forked repo and add the official repo as a remote.
-    - Tip: our development team keeps the remote name `origin` for the original repo, and uses a different name for our forked remote like `josh`, `ben`, or `eric`.
-    - To add a remote branch (replacing with your desired remote name and actual remote URL) `git remote add ben https://github.com/benhammondmusic/health-equity-tracker`
-
-
-Read more about the forking workflow [here](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow).
-
-<details>
-<summary>Note that there are a few downsides to "Squash and merge":</summary>
-
-- The official repo will not show commits from collaborators if the PR is a collaborative branch.
-- Working off the same branch or a dependent branch duplicates commits on the dependent branch and can cause repeated merge conflicts. To work around this, if you have a PR `my_branch_1` and you want to start work on a new PR that is dependent on `my_branch_1`, you can do the following:
-  1. Create a new local branch `my_branch_2` based on `my_branch_1`. Continue to develop on `my_branch_2`.
-  2. If `my_branch_1` is updated (including by merging changes from main), switch to `my_branch_2` and run `git rebase -i my_branch_1` to incorporate the changes into `my_branch_2` while maintaining the the branch dependency.
-  3. When review is done, squash and merge `my_branch_1`. Don't delete `my_branch_1`yet.
-  4. From local client, go to main branch and pull from main to update the local main branch with the squashed change.
-  5. From local client, run `git rebase --onto main my_branch_1 my_branch_2`. This tells git to move all the commits between `my_branch_1` and `my_branch_2` onto main. You can now delete `my_branch_1`.
-
- For details on "Squash and merge" see [here](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/about-merge-methods-on-github#squashing-your-merge-commits)
-
-</details>
-
-
-
 
 # Frontend
 
@@ -205,7 +175,7 @@ pip install python/datasources/ && pytest python/tests/datasources/test_cdc_hiv.
 
 
 # HET Microservice Architecture
-![HET Microservice Architecture Diagram](https://raw.githubusercontent.com/SatcherInstitute/health-equity-tracker/9325c032d8df110fc234f0ecd75c54129282418f/HET%20Architecture.svg)
+![HET Microservice Architecture Diagram]
 
 
 # Developing Your Own Tracker
